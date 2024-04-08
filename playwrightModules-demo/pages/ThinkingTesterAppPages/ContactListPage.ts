@@ -21,4 +21,8 @@ export class ContactListPage {
   async isContactVisible(firstName: string, lastName: string) {
     await expect(this.name.first()).toContainText(firstName + " " + lastName);
   }
+
+  async tableHasNoContact() {
+    await expect(this.name).toHaveCount(0);
+  }
 }
