@@ -6,7 +6,7 @@ import { AddContactPage } from '../../../pages/ThinkingTesterAppPages/AddContact
 test('Add contact @test', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.navigateToLandingPage();
-  await loginPage.login("lan.nguyen@ttcglobal.com", "Khunglong@123");
+  await loginPage.login("lan.nguyen@test.com", "Password@123");
 
   const contactListPage = new ContactListPage(page);
   await contactListPage.clickAddNewContact();
