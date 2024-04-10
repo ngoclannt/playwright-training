@@ -12,8 +12,8 @@ dotenv.config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const defaultConfig : PlaywrightTestConfig = {
-  testDir: './tests',
+const defaultConfig: PlaywrightTestConfig = {
+  testDir: "./tests",
   /*
     Demo config changes
   */
@@ -37,20 +37,20 @@ const defaultConfig : PlaywrightTestConfig = {
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: 'html',
   /*Module 4 reporters*/
-  reporter: [['line'],['html'], ["allure-playwright"]],
-  
+  reporter: [["line"], ["html"], ["allure-playwright"]],
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    
+
     /*Module 4 : screenshot and video
    screenshot: 'on',
    video: 'on',
     */
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
     /*Module 4 : traces
     trace: 'on',
     */
@@ -59,28 +59,20 @@ const defaultConfig : PlaywrightTestConfig = {
   /* Configure projects for major browsers */
   projects: [
     // Global setup and teardown
-    // {
-    //   name: 'setup login',
-    //   testMatch: 'global.setup.ts',
-    //   teardown: 'teardown logout'
-    // },
-
-    // {
-    //   name: 'teardown logout',
-    //   testMatch: 'global.teardown.ts'
-    // },
-
-    // Module 3 - Session storage as setup
-    // {
-    //   name: 'setup login',
-    //   testMatch: 'sessionStorage.setup.ts',
-    // },
+    {
+      name: "Login and Store Cookies",
+      testMatch: "global.setup.ts",
+      teardown: "Logout and Delete Cookies"
+    },
+    {
+      name: "Logout and Delete Cookies",
+      testMatch: "global.teardown.ts",
+    },
 
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-      // Module 3 - Session storage dependency
-      //  dependencies: ['setup login']
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+      dependencies: ["Login and Store Cookies"],
     },
 
     // {
@@ -99,8 +91,8 @@ const defaultConfig : PlaywrightTestConfig = {
     //   use: { ...devices['Pixel 5'] },
     // },
     {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
+      name: "Mobile Safari",
+      use: { ...devices["iPhone 12"] },
     },
 
     /* Test against branded browsers. */
